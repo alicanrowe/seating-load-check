@@ -1,0 +1,19 @@
+{
+ "name": "MB-SH-01_rest_17-4PH",
+ "units": "cm",
+ "up": "z",
+ "material": "17-4PH H1150 cast",
+ "parts": {
+  "^Metal_Frame$": {
+   "role": "structure"
+  },
+  "^Cushion$": {
+   "role": "pad",
+   "density": 250
+  }
+ },
+ "seat": "^Cushion$",
+ "default_joint": "fused",
+ "stand": false,
+ "note": "investment cast 17-4PH H1150 in sections, welded; treated as one piece"
+}

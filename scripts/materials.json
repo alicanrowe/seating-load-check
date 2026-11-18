@@ -1,0 +1,388 @@
+{
+ "_about": "Material data for seatcheck.py. SI units: E and strengths in MPa, density in kg/m3. Wood values are clear, straight-grained wood at 12% moisture content, average (mean) values after the USDA Forest Products Laboratory Wood Handbook (FPL-GTR-282, 2021), Table 5-3. Tension parallel to grain is not in that table; MOR is used in its place (clear-wood tension parallel is normally higher, so this is on the safe side). Metal values are typical published figures, not guaranteed minimums unless marked. For printed metal, replace them with the print bureau's data sheet for the exact process, orientation and finish.",
+ "wood_elastic_ratios": {
+  "_about": "Hardwood averages used to build each wood's stiffness from its E along the grain (Wood Handbook Table 5-1, rounded). The checker treats wood as transversely isotropic about the grain.",
+  "E_perp_over_EL": 0.075,
+  "G_par_over_EL": 0.07,
+  "G_roll_over_EL": 0.018,
+  "nu_par": 0.4,
+  "nu_perp": 0.5
+ },
+ "wood": {
+  "yellow poplar": {
+   "aka": [
+    "poplar",
+    "tulip poplar"
+   ],
+   "density": 460,
+   "E": 10900,
+   "MOR": 70,
+   "fc_par": 38.2,
+   "fc_perp": 3.4,
+   "fv": 8.2,
+   "ft_perp": 3.7
+  },
+  "black walnut": {
+   "aka": [
+    "walnut"
+   ],
+   "density": 610,
+   "E": 11600,
+   "MOR": 101,
+   "fc_par": 52.3,
+   "fc_perp": 7.0,
+   "fv": 9.4,
+   "ft_perp": 4.8
+  },
+  "white oak": {
+   "aka": [
+    "oak"
+   ],
+   "density": 750,
+   "E": 12300,
+   "MOR": 105,
+   "fc_par": 51.3,
+   "fc_perp": 7.4,
+   "fv": 13.8,
+   "ft_perp": 5.5
+  },
+  "northern red oak": {
+   "aka": [
+    "red oak"
+   ],
+   "density": 700,
+   "E": 12500,
+   "MOR": 99,
+   "fc_par": 46.6,
+   "fc_perp": 7.0,
+   "fv": 12.3,
+   "ft_perp": 5.5
+  },
+  "sugar maple": {
+   "aka": [
+    "hard maple",
+    "maple"
+   ],
+   "density": 705,
+   "E": 12600,
+   "MOR": 109,
+   "fc_par": 54.0,
+   "fc_perp": 10.1,
+   "fv": 16.1,
+   "ft_perp": 4.0
+  },
+  "black cherry": {
+   "aka": [
+    "cherry"
+   ],
+   "density": 560,
+   "E": 10300,
+   "MOR": 85,
+   "fc_par": 49.0,
+   "fc_perp": 4.8,
+   "fv": 11.7,
+   "ft_perp": 3.9
+  },
+  "white ash": {
+   "aka": [
+    "ash"
+   ],
+   "density": 670,
+   "E": 12000,
+   "MOR": 103,
+   "fc_par": 51.1,
+   "fc_perp": 8.0,
+   "fv": 13.2,
+   "ft_perp": 6.5
+  },
+  "eastern white pine": {
+   "aka": [
+    "white pine",
+    "pine"
+   ],
+   "density": 400,
+   "E": 8500,
+   "MOR": 59,
+   "fc_par": 33.1,
+   "fc_perp": 3.0,
+   "fv": 6.2,
+   "ft_perp": 2.1
+  },
+  "douglas fir": {
+   "aka": [
+    "doug fir",
+    "fir"
+   ],
+   "density": 530,
+   "E": 13400,
+   "MOR": 85,
+   "fc_par": 49.9,
+   "fc_perp": 5.5,
+   "fv": 7.8,
+   "ft_perp": 2.3
+  },
+  "baltic birch ply": {
+   "aka": [
+    "ply",
+    "plywood",
+    "birch ply"
+   ],
+   "density": 680,
+   "E": 8000,
+   "MOR": 50,
+   "fc_par": 30,
+   "fc_perp": 6,
+   "fv": 5,
+   "ft_perp": 3,
+   "isotropic": true,
+   "_note": "rough in-plane average for a crossbanded panel; treat as isotropic"
+  }
+ },
+ "metal": {
+  "316L printed LPBF": {
+   "aka": [
+    "316l lpbf",
+    "316l slm",
+    "printed 316l lpbf"
+   ],
+   "density": 7950,
+   "E": 190000,
+   "fy": 450,
+   "fu": 600,
+   "Se": 110,
+   "Se_polished": 250,
+   "_note": "laser powder bed, as built. Se = fully reversed fatigue strength at about 1e7 cycles; as-built surface is rough and roughly halves it"
+  },
+  "316L printed binder jet": {
+   "aka": [
+    "316l binder jet",
+    "printed 316l bj",
+    "printed stainless",
+    "printed 316l",
+    "316l printed"
+   ],
+   "density": 7850,
+   "E": 180000,
+   "fy": 200,
+   "fu": 500,
+   "Se": 100,
+   "Se_polished": 180,
+   "_note": "binder jet, sintered. Lower yield than LPBF; the default for 'printed stainless' when the process is unknown, since it is the weaker of the two"
+  },
+  "316L wrought": {
+   "aka": [
+    "316l",
+    "316",
+    "316 stainless"
+   ],
+   "density": 8000,
+   "E": 193000,
+   "fy": 170,
+   "fu": 485,
+   "Se": 200,
+   "Se_polished": 240,
+   "_note": "annealed bar/plate, ASTM A240 minimums for fy and fu"
+  },
+  "304 wrought": {
+   "aka": [
+    "304",
+    "18-8"
+   ],
+   "density": 8000,
+   "E": 193000,
+   "fy": 205,
+   "fu": 515,
+   "Se": 200,
+   "Se_polished": 240
+  },
+  "CF8M cast": {
+   "aka": [
+    "cast 316",
+    "cast stainless"
+   ],
+   "density": 7900,
+   "E": 193000,
+   "fy": 205,
+   "fu": 485,
+   "Se": 140,
+   "Se_polished": 200,
+   "_note": "investment-cast 316. Porosity makes fatigue scatter large"
+  },
+  "mild steel": {
+   "aka": [
+    "a36",
+    "steel",
+    "1018"
+   ],
+   "density": 7850,
+   "E": 200000,
+   "fy": 250,
+   "fu": 400,
+   "Se": 140,
+   "Se_polished": 200
+  },
+  "6061-T6 aluminum": {
+   "aka": [
+    "6061",
+    "aluminum",
+    "aluminium"
+   ],
+   "density": 2700,
+   "E": 69000,
+   "fy": 276,
+   "fu": 310,
+   "Se": 90,
+   "Se_polished": 96,
+   "_note": "no true endurance limit; Se is at 5e8 cycles. Welds drop to about T4 strength"
+  },
+  "sterling silver": {
+   "aka": [
+    "925",
+    "sterling"
+   ],
+   "density": 10360,
+   "E": 76000,
+   "fy": 120,
+   "fu": 250,
+   "Se": 60,
+   "Se_polished": 80,
+   "_note": "annealed casting; low confidence"
+  },
+  "brass": {
+   "aka": [
+    "c360",
+    "c260"
+   ],
+   "density": 8500,
+   "E": 100000,
+   "fy": 200,
+   "fu": 400,
+   "Se": 100,
+   "Se_polished": 130,
+   "_note": "half-hard; wide range by alloy and temper"
+  },
+  "silicon bronze C87300": {
+   "aka": [
+    "silicon bronze",
+    "c87300",
+    "everdur"
+   ],
+   "density": 8360,
+   "E": 105000,
+   "fy": 170,
+   "fu": 380,
+   "Se": 100,
+   "Se_polished": 120,
+   "_note": "sand/investment cast, ASTM B584 typicals; fatigue value low confidence"
+  },
+  "17-4PH H1150 cast": {
+   "aka": [
+    "17-4ph",
+    "17-4",
+    "cb7cu-1",
+    "17-4 h1150"
+   ],
+   "density": 7800,
+   "E": 197000,
+   "fy": 725,
+   "fu": 930,
+   "Se": 300,
+   "Se_polished": 400,
+   "_note": "cast CB7Cu-1 aged H1150, typicals; cast fatigue well below wrought, low confidence"
+  },
+  "17-4PH H900": {
+   "aka": [
+    "17-4ph h900",
+    "17-4 h900"
+   ],
+   "density": 7800,
+   "E": 197000,
+   "fy": 1170,
+   "fu": 1310,
+   "Se": 350,
+   "Se_polished": 550,
+   "_note": "peak-aged; brittle-ish (low impact toughness). Cast values run lower than these wrought typicals; low confidence"
+  },
+  "Ti-6Al-4V printed": {
+   "aka": [
+    "ti64",
+    "ti-6al-4v",
+    "printed titanium",
+    "titanium"
+   ],
+   "density": 4430,
+   "E": 114000,
+   "fy": 880,
+   "fu": 950,
+   "Se": 250,
+   "Se_polished": 500,
+   "_note": "laser powder bed, stress relieved + HIP. As-built surface roughly halves fatigue"
+  },
+  "maraging 1.2709 printed": {
+   "aka": [
+    "maraging",
+    "1.2709",
+    "ms1",
+    "maraging steel",
+    "18ni300"
+   ],
+   "density": 8100,
+   "E": 190000,
+   "fy": 1900,
+   "fu": 2000,
+   "Se": 300,
+   "Se_polished": 600,
+   "_note": "laser powder bed, aged. Fatigue very sensitive to surface and porosity; low confidence"
+  }
+ },
+ "pad": {
+  "_about": "Cushions, leather, upholstery: no stiffness in the model, they pass the load down to whatever they sit on. Density in kg/m3 for weight and tipping.",
+  "density": 120
+ },
+ "bolts": {
+  "_about": "Tensile stress area As in mm2. fy = 0.2% proof stress, fu = tensile strength, MPa (ISO 3506 for stainless, ISO 898-1 / SAE J429 for carbon steel).",
+  "sizes": {
+   "M3": 5.03,
+   "M4": 8.78,
+   "M5": 14.2,
+   "M6": 20.1,
+   "M8": 36.6,
+   "M10": 58.0,
+   "M12": 84.3,
+   "#10-24": 11.3,
+   "1/4-20": 20.5,
+   "5/16-18": 33.8,
+   "3/8-16": 50.0,
+   "1/2-13": 91.5
+  },
+  "grades": {
+   "A2-70": {
+    "fy": 450,
+    "fu": 700
+   },
+   "A4-70": {
+    "fy": 450,
+    "fu": 700
+   },
+   "A2-50": {
+    "fy": 210,
+    "fu": 500
+   },
+   "8.8": {
+    "fy": 640,
+    "fu": 800
+   },
+   "SAE5": {
+    "fy": 634,
+    "fu": 827
+   },
+   "18-8": {
+    "fy": 450,
+    "fu": 700
+   }
+  }
+ },
+ "wood_screws": {
+  "_about": "Withdrawal from side grain, NDS 12.2: wood screw W = 2850 G^2 D lb per inch of thread in the main member (reference design value, already has a safety factor of about 5 on the average ultimate). Lag screw W = 1800 G^1.5 D^0.75. End grain: 75% of those for lag screws; wood screws are not rated in end grain (treat as zero)."
+ }
+}

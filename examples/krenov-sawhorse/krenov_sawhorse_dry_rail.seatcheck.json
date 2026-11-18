@@ -1,0 +1,51 @@
+{
+ "name": "krenov_sawhorse_vB",
+ "units": "in",
+ "up": "z",
+ "material": "yellow poplar",
+ "parts": {
+  "^Top_Rail$": {
+   "grain": "x"
+  },
+  "^Leg_": {
+   "grain": "z"
+  },
+  "^Foot_": {
+   "grain": "y"
+  },
+  "^Stretcher$": {
+   "grain": "x"
+  },
+  "^Cushion$": {
+   "role": "pad"
+  }
+ },
+ "seat": "^Cushion$",
+ "joints": [
+  {
+   "between": [
+    "^Top_Rail$",
+    "^Leg_"
+   ],
+   "type": "dry",
+   "note": "rail dropped in the open slot without glue (worst case); glued version run separately"
+  },
+  {
+   "between": [
+    "^Leg_",
+    "^Foot_"
+   ],
+   "type": "glued",
+   "note": "3/8 x 1 3/4 x 1 1/8 blind tenon"
+  },
+  {
+   "between": [
+    "^Stretcher$",
+    "^Leg_"
+   ],
+   "type": "glued",
+   "note": "1/4 x 2 3/8 through tenon"
+  }
+ ],
+ "stand": false
+}

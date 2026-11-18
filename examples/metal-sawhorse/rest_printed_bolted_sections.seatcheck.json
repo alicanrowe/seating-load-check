@@ -1,0 +1,182 @@
+{
+ "name": "metal_sawhorse_MB-SH-01",
+ "units": "cm",
+ "up": "z",
+ "material": "316L printed binder jet",
+ "parts": {
+  "^Metal_Frame$": {
+   "role": "structure"
+  },
+  "^Cushion$": {
+   "role": "pad",
+   "density": 250
+  }
+ },
+ "seat": "^Cushion$",
+ "stand": false,
+ "cuts": [
+  {
+   "name": "foot to leg L",
+   "point": [
+    -28.9,
+    0,
+    7
+   ],
+   "normal": [
+    0,
+    0,
+    1
+   ],
+   "radius": 6,
+   "type": "bolted",
+   "bolt": "M6",
+   "grade": "A4-70",
+   "count": 2
+  },
+  {
+   "name": "leg to head L",
+   "point": [
+    -29.6,
+    0,
+    60
+   ],
+   "normal": [
+    0,
+    0,
+    1
+   ],
+   "radius": 6,
+   "type": "bolted",
+   "bolt": "M6",
+   "grade": "A4-70",
+   "count": 2
+  },
+  {
+   "name": "forewing to leg L",
+   "point": [
+    -26,
+    0,
+    46
+   ],
+   "normal": [
+    1,
+    0,
+    0
+   ],
+   "radius": 4.5,
+   "type": "bolted",
+   "bolt": "M5",
+   "grade": "A4-70",
+   "count": 1
+  },
+  {
+   "name": "hindwing to leg L",
+   "point": [
+    -26,
+    0,
+    17.75
+   ],
+   "normal": [
+    1,
+    0,
+    0
+   ],
+   "radius": 2.5,
+   "type": "bolted",
+   "bolt": "M5",
+   "grade": "A4-70",
+   "count": 1
+  },
+  {
+   "name": "foot to leg R",
+   "point": [
+    30.9,
+    0,
+    7
+   ],
+   "normal": [
+    0,
+    0,
+    1
+   ],
+   "radius": 6,
+   "type": "bolted",
+   "bolt": "M6",
+   "grade": "A4-70",
+   "count": 2
+  },
+  {
+   "name": "leg to head R",
+   "point": [
+    29.6,
+    0,
+    60
+   ],
+   "normal": [
+    0,
+    0,
+    1
+   ],
+   "radius": 6,
+   "type": "bolted",
+   "bolt": "M6",
+   "grade": "A4-70",
+   "count": 2
+  },
+  {
+   "name": "forewing to leg R",
+   "point": [
+    26,
+    0,
+    46
+   ],
+   "normal": [
+    1,
+    0,
+    0
+   ],
+   "radius": 4.5,
+   "type": "bolted",
+   "bolt": "M5",
+   "grade": "A4-70",
+   "count": 1
+  },
+  {
+   "name": "hindwing to leg R",
+   "point": [
+    26,
+    0,
+    17.75
+   ],
+   "normal": [
+    1,
+    0,
+    0
+   ],
+   "radius": 2.5,
+   "type": "bolted",
+   "bolt": "M5",
+   "grade": "A4-70",
+   "count": 1
+  },
+  {
+   "name": "rail centre",
+   "point": [
+    0,
+    0,
+    71.6
+   ],
+   "normal": [
+    1,
+    0,
+    0
+   ],
+   "radius": 6,
+   "type": "bolted",
+   "bolt": "M6",
+   "grade": "A4-70",
+   "count": 2
+  }
+ ],
+ "_note": "Split lines and bolts are assumed (not in the model): feet, leg heads, wing tips and the rail centre, M6/M5 A4-70. Replace with the real section plan."
+}
