@@ -59,5 +59,15 @@ After changing `scripts/seatcheck.py`: `cd scripts/tests && python3 make_fixture
 ## Limits
 It's a second pair of eyes, not a certification. Wood is clear, straight-grained, 12% moisture; real boards are weaker, which is what the 2.5 safety factor is for. Every face where parts touch is bonded except dry joints, so a glued joint is as stiff as solid wood. Grain runs along x, y or z (no curved grain). Stresses at sharp inside corners depend on the cell size. Tipping is rigid-body and assumes the floor doesn't slip. For a product sold to the public, test to the standard (EN 1022 / EN 12520 / ANSI/BIFMA X5.1) on a real one.
 
+## Excuses that don't count
+Each of these is a shortcut that ends in a broken result. If you catch yourself thinking the left column, do the right column.
+
+| The excuse | What to do instead |
+|---|---|
+| "It's solid hardwood, it'll hold" | Write the spec and run the check, including drop-in, edge and leaning loads. |
+| "Tipping isn't a risk for this one" | Run the tip check for the leaning case anyway. |
+| "One warning is fine" | Fix and re-run until the report is clean, or write down why a warning stands. |
+| "While I'm in here I'll also tidy/refactor this other bit" | Change only what the task needs. Smallest diff that works; no new options, helpers or files nobody asked for. Note other ideas for later instead. |
+
 ## Keep this skill improving
 When a real piece fails in a way the check didn't predict, or the owner flags a result as wrong, write the lesson into `references/reading-the-report.md` or `references/materials.md` in the same session, add a planted case to `scripts/tests/`, and re-run the tests. Then publish the skill.
