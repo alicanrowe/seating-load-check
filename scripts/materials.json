@@ -373,6 +373,22 @@
    "Se": 117,
    "Se_polished": 117,
    "_note": "SendCutSend's bendable aluminium sheet. ASM / Aluminum Association typical values; Se is the R.R. Moore value at 5e8 cycles. Bends keep about H32 strength."
+  },
+  "GFRC premix": {
+   "aka": [
+    "gfrc",
+    "gfrc premix",
+    "glass fibre reinforced concrete",
+    "glass fiber reinforced concrete",
+    "cast concrete gfrc"
+   ],
+   "density": 2100,
+   "E": 15000,
+   "fy": 6.0,
+   "fu": 10.0,
+   "Se": 3.3,
+   "Se_polished": 3.3,
+   "_note": "Brittle cast composite, premix (poured, vibrated, AR glass fibre about 3%), 28-day. fy here is the flexural limit of proportionality (LOP, first crack, about 6-8 MPa per PCI MNL-130 / GRCA for premix), fu the modulus of rupture (about 10-14 MPa premix; sprayed GFRC is about 20-30). The checker's von Mises vs fy is conservative in tension and very conservative in compression (compressive strength is about 40-60 MPa); a pass means no first crack at the safety factor. Se is about 55% of LOP for 1e7 cycles. Lives under 'metal' only so the isotropic checks apply. Replace with the caster's test data."
   }
  },
  "pad": {
@@ -393,7 +409,10 @@
    "1/4-20": 20.5,
    "5/16-18": 33.8,
    "3/8-16": 50.0,
-   "1/2-13": 91.5
+   "1/2-13": 91.5,
+   "M14": 115.0,
+   "M16": 157.0,
+   "M20": 245.0
   },
   "grades": {
    "A2-70": {

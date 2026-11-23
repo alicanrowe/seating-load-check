@@ -30,7 +30,7 @@ Read `references/spec.md` for every key. The minimum:
 ```
 - Material per part from `scripts/materials.json` (`references/materials.md` says where the numbers come from and when to replace them). Printed metal: ask which process (laser powder bed or binder jet) and finish, and use the bureau's data sheet if there is one.
 - Grain: set it for every wood part whose grain doesn't run along its longest side, and check the guessed ones in the parts table.
-- Joints: `glued`, `dry` (rests or bears, can't take tension), `bolted` (`bolt`, `grade`, `count` or `at`), `screwed`. Anything not listed is glued between woods and bolted between metals. A rail dropped into an open slot without glue is `dry`.
+- Joints: `glued`, `dry` (rests or bears, can't take tension), `bolted` (`bolt`, `grade`, `count` or `at`; for one line of bolts, as on a flange bolted to a post, add `pry_mm`: bolt line to the plate edge it tips on), `screwed`. Anything not listed is glued between woods and bolted between metals. A rail dropped into an open slot without glue is `dry`.
 - Who sits on it: default 113 kg (250 lb) design sitter. Raise `occupant_kg` for a heavier user or public seating; set `"stand": true` if people will stand on it (sawhorses, step stools).
 
 ## 3. Run it
@@ -67,6 +67,8 @@ Each of these is a shortcut that ends in a broken result. If you catch yourself 
 | "It's solid hardwood, it'll hold" | Write the spec and run the check, including drop-in, edge and leaning loads. |
 | "Tipping isn't a risk for this one" | Run the tip check for the leaning case anyway. |
 | "One warning is fine" | Fix and re-run until the report is clean, or write down why a warning stands. |
+| "The sheet is thin, the voxels will do" | Sheet under about 2 cells thick comes out light (0.190 in at --res 3.2 was 73% of its volume). Read the Resolution lines, and fix a FAIL by design (thicker, bolts nearer the corner) rather than by hoping the coarse grid overstated it. Thin sheet-metal chairs at --res 3.2 take about 1.5 h for all cases on 4 cores (23 Nov 2026). |
+| "A row of flange bolts is a bolt group" | Bolts in one line resist a moment about that line by prying, not by their spread. Give the joint `pry_mm`. |
 | "While I'm in here I'll also tidy/refactor this other bit" | Change only what the task needs. Smallest diff that works; no new options, helpers or files nobody asked for. Note other ideas for later instead. |
 
 ## Keep this skill improving

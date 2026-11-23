@@ -64,6 +64,15 @@ d = run("metal_bolt_small", "--cases", "sit,edge")
 check("M3 bolts in the pedestal post fail", any(r["status"] == "FAIL" for r in rows(d, "joint")), [round(r["margin"], 2) for r in rows(d, "joint")])
 d = run("metal_bolt_ok", "--cases", "sit,edge")
 check("M10 bolts in the pedestal post pass", all(r["status"] == "PASS" for r in rows(d, "joint")), [round(r["margin"], 2) for r in rows(d, "joint")])
+# 7. one line of flange bolts (a back bolted to a post): a moment about the line pries, it doesn't blow up
+import numpy as np
+_src = open(SC).read(); _ns = {"np": np}
+exec(_src[_src.index("def bolt_group"):_src.index("def auto_bolts")], _ns)
+pos = np.array([[0.219, -0.2175, 0.5179], [0.219, -0.2274, 0.5973], [0.219, -0.2379, 0.6816]])
+e = (pos[2] - pos[0]) / np.linalg.norm(pos[2] - pos[0])
+T, V = _ns["bolt_group"](np.zeros(3), 30.0 * e, pos.mean(0), np.array([1.0, 0, 0]), pos, 0.009)
+hand = 30.0 / (3 * 0.009)
+check(f"bolt line: 30 N m about the line pries {hand:.0f} N per bolt", np.allclose(T, hand, rtol=0.02), np.round(T))
 n = sum(ok for _, ok in results)
 print(f"\n{n} of {len(results)} checks pass")
 sys.exit(0 if n == len(results) else 1)

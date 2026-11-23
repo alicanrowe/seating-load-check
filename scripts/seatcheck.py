@@ -676,16 +676,30 @@ def plane_basis(P):
     return c, v[:, 0], v[:, 2], v[:, 1]     # centroid, normal, major, minor
 
 
-def bolt_group(F, M, c, n_ab, pos):
-    """Elastic bolt-group forces. pos: (k,3) bolt positions. Returns per-bolt tension and shear (N)."""
+def bolt_group(F, M, c, n_ab, pos, pry=None):
+    """Elastic bolt-group forces. pos: (k,3) bolt positions. Returns per-bolt tension and shear (N).
+    Bolts in one line (a flange bolted to a post) can't resist a moment about that line by their spread:
+    the plate pries about its edge instead, so that moment goes to tension over the pry lever `pry` (m,
+    bolt line to the plate edge it tips on; default 2.5 bolt diameters if not given). Without this, a
+    nearly-straight line gave a near-singular inertia and absurd tension (1.3 MN on an M6, 23 Nov 2026),
+    and an exactly straight line gave none at all."""
     k = len(pos); cb = pos.mean(0)
     Mb = M + np.cross(c - cb, F)
     r = pos - cb; r -= np.outer(r @ n_ab, n_ab)
     Nt = F @ n_ab; V = F - Nt * n_ab
     Mn = Mb @ n_ab; Mbend = Mb - Mn * n_ab
+    T_pry = 0.0
+    if k >= 2:
+        sv = np.linalg.svd(r, compute_uv=False)
+        if sv[1] < 0.05 * sv[0]:                    # one line of bolts
+            e1 = np.linalg.svd(r)[2][0]
+            r = np.outer(r @ e1, e1)
+            m1 = Mbend @ e1                         # moment about the bolt line: prying
+            T_pry = abs(m1) / (k * (pry or 0.015))
+            Mbend = Mbend - m1 * e1
     I = r.T @ r
     kv = np.linalg.pinv(I) @ np.cross(n_ab, Mbend)
-    T = Nt / k + r @ kv
+    T = Nt / k + r @ kv + T_pry
     rr = np.linalg.norm(r, axis=1); J = (rr ** 2).sum()
     Vt = np.abs(Mn) * rr / J if J > 0 else 0 * rr
     Vb = np.linalg.norm(V) / k + Vt
@@ -1268,7 +1282,8 @@ def bolt_check(js, F, M, c, n_ab, P, maj, mnr, lib, sf, us, mA, mB):
         pos = np.array(js["at"], float) * us; fits = True
     else:
         pos, fits = auto_bolts(P, None, maj, mnr, count, d)
-    T, V = bolt_group(F, M, c, n_ab, pos)
+    count = len(pos)
+    T, V = bolt_group(F, M, c, n_ab, pos, js["pry_mm"] / 1000 if "pry_mm" in js else 2.5 * d)
     Tc = As * g["fy"] * 1e6; Vc = 0.6 * g["fu"] * 1e6 * As
     ut = np.sqrt((np.maximum(T, 0) / Tc) ** 2 + (V / Vc) ** 2) * sf["bolt"]
     k = int(np.argmax(ut))
