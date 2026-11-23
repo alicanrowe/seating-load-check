@@ -490,6 +490,11 @@ class FEModel:
         res = []
         x = self._ml.solve(b, x0=x0, tol=1e-9, accel="cg", maxiter=800, residuals=res)
         rel = res[-1] / max(res[0], 1e-30) if res else 0
+        if rel > 1e-5:   # keep iterating first: a direct solve of ~600k dof needs >11 GB and was OOM-killed (23 Nov 2026)
+            res2 = []
+            x = self._ml.solve(b, x0=x, tol=1e-9, accel="cg", maxiter=4000, residuals=res2)
+            rel = res2[-1] / max(res[0], 1e-30) if res2 else rel
+            res += res2
         if rel > 1e-5:
             print(f"  warning: solver residual {rel:.1e}, falling back to direct solve", flush=True)
             x = spla.spsolve(self.Kff.tocsc(), b)
