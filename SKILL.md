@@ -37,7 +37,7 @@ Read `references/spec.md` for every key. The minimum:
 
 ## 3. Run it
 ```
-pip install trimesh numpy scipy pyamg shapely rtree pillow
+pip install trimesh numpy scipy pyamg shapely rtree pillow pypardiso   # pypardiso: ~50 s a case at 120k cells instead of 6 to 50 min, and no out-of-memory fallback (23 Nov 2026)
 python3 scripts/seatcheck.py MODEL.glb --spec piece.seatcheck.json
 ```
 It picks a cell size from the volume (and at least 3 cells through the thinnest part). Then run once more at a finer `--res` (about 0.7 x the first cell, in model units) and only trust results that hold at both. Memory grows with the cell count (about 6 GB at 120k cells); if the finer run won't fit, run a coarser one (about 1.25 x) and say so. A number that keeps moving between sizes is a thin part or a sharp inside corner (see the reading guide). Writes `<name>.seatcheck.md`, `.json` and a one-page `.png`.
@@ -69,7 +69,7 @@ Each of these is a shortcut that ends in a broken result. If you catch yourself 
 | "It's solid hardwood, it'll hold" | Write the spec and run the check, including drop-in, edge and leaning loads. |
 | "Tipping isn't a risk for this one" | Run the tip check for the leaning case anyway. |
 | "One warning is fine" | Fix and re-run until the report is clean, or write down why a warning stands. |
-| "The sheet is thin, the voxels will do" | Sheet under about 2 cells thick comes out light (0.190 in at --res 3.2 was 73% of its volume). Read the Resolution lines, and fix a FAIL by design (thicker, bolts nearer the corner) rather than by hoping the coarse grid overstated it. Thin sheet-metal chairs at --res 3.2 take about 1.5 h for all cases on 4 cores (23 Nov 2026). |
+| "The sheet is thin, the voxels will do" | Sheet under about 2 cells thick comes out light (0.190 in at --res 3.2 was 73% of its volume). Read the Resolution lines, and fix a FAIL by design (thicker, bolts nearer the corner) rather than by hoping the coarse grid overstated it. Install pypardiso: without it a 120k-cell sheet chair took 1.5 h and was OOM-killed in its direct-solve fallback; with it, about 10 minutes (23 Nov 2026). |
 | "A row of flange bolts is a bolt group" | Bolts in one line resist a moment about that line by prying, not by their spread. Give the joint `pry_mm`. |
 | "While I'm in here I'll also tidy/refactor this other bit" | Change only what the task needs. Smallest diff that works; no new options, helpers or files nobody asked for. Note other ideas for later instead. |
 
