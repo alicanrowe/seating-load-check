@@ -389,6 +389,21 @@
    "Se": 3.3,
    "Se_polished": 3.3,
    "_note": "Brittle cast composite, premix (poured, vibrated, AR glass fibre about 3%), 28-day. fy here is the flexural limit of proportionality (LOP, first crack, about 6-8 MPa per PCI MNL-130 / GRCA for premix), fu the modulus of rupture (about 10-14 MPa premix; sprayed GFRC is about 20-30). The checker's von Mises vs fy is conservative in tension and very conservative in compression (compressive strength is about 40-60 MPa); a pass means no first crack at the safety factor. Se is about 55% of LOP for 1e7 cycles. Lives under 'metal' only so the isotropic checks apply. Replace with the caster's test data."
+  },
+  "GFRC sprayed": {
+   "aka": [
+    "gfrc spray",
+    "sprayed gfrc",
+    "gfrc spray-up",
+    "gfrc sprayed"
+   ],
+   "density": 2050,
+   "E": 17000,
+   "fy": 9.0,
+   "fu": 18.0,
+   "Se": 5.0,
+   "Se_polished": 5.0,
+   "_note": "Spray-up or hand-packed GFRC with about 5% AR glass fibre, in open one-sided molds (flat slabs, panels). LOP about 9-11 MPa, MOR about 20-28 MPa (PCI MNL-130 / GRCA design values). Same caveats as GFRC premix: brittle, von Mises vs LOP. Only for parts that can be sprayed in an open mold."
   }
  },
  "pad": {
