@@ -333,6 +333,46 @@
    "Se": 300,
    "Se_polished": 600,
    "_note": "laser powder bed, aged. Fatigue very sensitive to surface and porosity; low confidence"
+  },
+  "6061-T6 welded": {
+   "aka": [
+    "6061 welded",
+    "aluminium welded",
+    "aluminum welded"
+   ],
+   "density": 2700,
+   "E": 69000,
+   "fy": 110,
+   "fu": 165,
+   "Se": 30,
+   "Se_polished": 30,
+   "_note": "as-welded 6061-T6 heat-affected zone (Aluminum Design Manual welded minimums, Ftyw ~105-115, Ftuw 165 MPa). Use for a whole welded frame: conservative away from the welds. Se is a rough as-welded detail value at 5e8 cycles."
+  },
+  "6061-T6 welded tube as solid": {
+   "aka": [
+    "6061 tube solid"
+   ],
+   "density": 970,
+   "E": 40000,
+   "fy": 64,
+   "fu": 96,
+   "Se": 17,
+   "Se_polished": 17,
+   "_note": "For a welded 6061-T6 round tube frame (about 30 x 3 or 25.4 x 2.5) that the CAD models as solid rods: the welded-HAZ values (fy 110, fu 165, E 69000, Se 30) scaled by the tube's share of the solid rod's section modulus (about 0.58); density scaled by area (about 0.36). Bending is right; axial and shear stress come out about 1.6 x low, which is acceptable only because bending governs in tube chairs."
+  },
+  "5052-H32 aluminum": {
+   "aka": [
+    "5052",
+    "5052-H32",
+    "aluminium 5052"
+   ],
+   "density": 2680,
+   "E": 70300,
+   "fy": 193,
+   "fu": 228,
+   "Se": 117,
+   "Se_polished": 117,
+   "_note": "SendCutSend's bendable aluminium sheet. ASM / Aluminum Association typical values; Se is the R.R. Moore value at 5e8 cycles. Bends keep about H32 strength."
   }
  },
  "pad": {
