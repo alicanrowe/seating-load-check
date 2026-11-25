@@ -215,7 +215,6 @@ def element_K(D, h):
     K = Kcc - Kci @ Ki @ Kci.T
     # strain at each corner: B u + G alpha, alpha = -Kii^-1 Kci^T u; evaluate at the Gauss points
     # nearest each corner, extrapolated linearly to the corner
-    s = math.sqrt(3)
     E = np.zeros((8, 6, 24))
     for n in range(8):
         xi = (2 * LOC[n] - 1).astype(float)
@@ -807,7 +806,6 @@ def tipping(hull, com_xy, mass_kg, fp, seat_top, cfg, units_s, com_z=None, botto
             "lean": (margin(loads_lean, H_lean), loads_lean, H_lean),
         }
         for name, (mg, loads, H) in cases.items():
-            req = 1.0
             fix = {}
             target = cfg["warn_margin"]
             if mg < target:
