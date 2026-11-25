@@ -1334,7 +1334,6 @@ def summarize(res, cfg, units):
         rs = [r for r in res["tipping"] if r["case"] == case]
         if not rs: continue
         w = min(rs, key=lambda r: r["margin"])
-        rq = 1.0
         mg = w["margin"]
         if case == "perch on the edge" and not cfg["perch_must_hold"]:
             mg = max(mg, 1.0)
