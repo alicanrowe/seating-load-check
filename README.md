@@ -1,3 +1,5 @@
+![Seating load check: Will it hold the person sitting on it? Pass or fail from the CAD model, with margins and fixes.](.github/banner.png)
+
 # Seating load check skill
 
 A Claude skill that checks anything people sit on (chairs, stools, benches, sawhorses, metal or printed seating) from its CAD model: will it hold the person sitting on it, including dropping in, perching on an edge and leaning back, and will it tip? It gives a pass / warn / fail report with margins and the fixes.
